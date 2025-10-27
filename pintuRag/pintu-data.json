@@ -1,0 +1,7 @@
+{
+  "personal": {"name":"Pintu Mahato","title":"Java Backend Developer","summary":"Experienced in Java, Spring Boot, Hibernate, and databases."},
+  "skills": ["Java","Spring Boot","Hibernate","JPA","MySQL","PostgreSQL","REST API","AWS Basics"],
+  "projects": {"Employee Management System":"CRUD system with Spring Boot and Hibernate.","Blog Application":"Web app with authentication and comments.","Inventory Tracker":"Real-time stock system with REST APIs."},
+  "experience": ["2.7 years backend development","Intern at Cognifiz","Intern at Euphoria"],
+  "education":"B.Tech in Electronics and Communication Engineering"
+}

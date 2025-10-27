@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pintu AI Assistant</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0a;
+  color: #e0e0e0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Floating messages container */
+#messages {
+  position: fixed;
+  bottom: 70px;
+  width: 80%;
+  max-width: 600px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.message {
+  padding: 10px 14px;
+  border-radius: 16px;
+  max-width: 80%;
+  line-height: 1.4;
+  word-wrap: break-word;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.4s forwards;
+}
+
+.user {
+  align-self: flex-end;
+  background: #007aff;
+  color: #fff;
+}
+
+.bot {
+  align-self: flex-start;
+  background: rgba(255,255,255,0.05);
+  color: #cbd5e1;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Minimal glassy search bar */
+#ai-bar {
+  width: 80%;
+  max-width: 600px;
+  padding: 14px 18px;
+  border-radius: 30px;
+  border: none;
+  background: rgba(20,20,20,0.8);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+#ai-bar:focus {
+  box-shadow: 0 0 12px #06b6d4;
+}
+
+/* Typing animation */
+.typing {
+  display: inline-block;
+  opacity: 0.9;
+}
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: blink 1s infinite;
+}
+.dot:nth-child(2){animation-delay:0.12s}
+.dot:nth-child(3){animation-delay:0.24s}
+@keyframes blink{0%{opacity:0.2}50%{opacity:1}100%{opacity:0.2}}
+</style>
+</head>
+<body>
+
+<div id="messages"></div>
+<input id="ai-bar" type="text" placeholder="Ask about Pintu Mahato..." autocomplete="off">
+
+<script id="pintu-data" type="application/json">
+{
+  "personal": {"name":"Pintu Mahato","title":"Java Backend Developer","summary":"Experienced in Java, Spring Boot, Hibernate, and databases."},
+  "skills": ["Java","Spring Boot","Hibernate","JPA","MySQL","PostgreSQL","REST API","AWS Basics"],
+  "projects": {"Employee Management System":"CRUD system with Spring Boot and Hibernate.","Blog Application":"Web app with authentication and comments.","Inventory Tracker":"Real-time stock system with REST APIs."},
+  "experience": ["2.7 years backend development","Intern at Cognifiz","Intern at Euphoria"],
+  "education":"B.Tech in Electronics and Communication Engineering"
+}
+</script>
+
+<script>
+const data = JSON.parse(document.getElementById('pintu-data').textContent);
+const aiBar = document.getElementById('ai-bar');
+const messagesDiv = document.getElementById('messages');
+
+function appendMessage(sender, text){
+  const msg = document.createElement('div');
+  msg.classList.add('message', sender);
+  msg.textContent = text;
+  messagesDiv.appendChild(msg);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+
+function showTyping(){
+  const div = document.createElement('div');
+  div.className='message bot typing';
+  div.innerHTML='<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+  messagesDiv.appendChild(div);
+  messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  return div;
+}
+
+async function generateResponse(msg){
+    try {
+        const res = await fetch('http://localhost:8000/query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: msg })
+        });
+        const data = await res.json();
+        return data.answer;
+    } catch(err) {
+        return "Sorry, I couldn't get an answer from RAG server.";
+    }
+}
+
+
+async function handleSend(){
+  const text = aiBar.value.trim();
+  if(!text) return;
+  messagesDiv.style.display='flex';
+  appendMessage('user', text);
+  aiBar.value='';
+  const typing = showTyping();
+  const answer = await generateResponse(text);
+  typing.remove();
+  appendMessage('bot', answer);
+}
+
+
+aiBar.addEventListener('focus', ()=>{
+  messagesDiv.style.display='flex';
+});
+
+aiBar.addEventListener('keypress', e=>{if(e.key==='Enter') handleSend();});
+
+document.addEventListener('click', e=>{
+  if(e.target!==aiBar){
+    messagesDiv.style.display='none';
+  }
+});
+
+// initial greeting (hidden until focus)
+// appendMessage('bot','Hi 👋, I’m Pintu’s AI assistant! Ask about his skills, projects, or experience.');
+</script>
+
+</body>
+</html>

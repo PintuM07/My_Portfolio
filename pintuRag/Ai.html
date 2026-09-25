@@ -33,7 +33,8 @@ body {
   padding: 10px 14px;
   border-radius: 16px;
   max-width: 80%;
-  line-height: 1.4;
+  line-height: 1.5;
+  white-space: pre-wrap;
   word-wrap: break-word;
   opacity: 0;
   transform: translateY(20px);
@@ -164,9 +165,9 @@ aiBar.addEventListener('focus', ()=>{
 
 aiBar.addEventListener('keypress', e=>{if(e.key==='Enter') handleSend();});
 
-document.addEventListener('click', e=>{
-  if(e.target!==aiBar){
-    messagesDiv.style.display='none';
+document.addEventListener('click', e => {
+  if (e.target !== aiBar && !messagesDiv.contains(e.target)) {
+    // Only hide if outside both bar and messages
   }
 });
 

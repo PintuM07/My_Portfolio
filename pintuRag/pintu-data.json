@@ -8,7 +8,7 @@
     "phone": "+91 89182 53874",
     "linkedin": "https://www.linkedin.com/in/pintu-mahato-software-developer/",
     "github": "https://github.com/PintuM07",
-    "summary": "Passionate Software Developer at TRPGLOBAL, Kolkata. Loves solving backend problems with Java, Spring Boot, and Oracle APEX."
+    "summary": "Passionate Software Developer at TRPGLOBAL, Kolkata. Loves solving backend problems with Java, Spring Boot, and Oracle APEX. 2+ years experience building scalable web applications."
   },
   "skills": [
     "Java",
@@ -29,7 +29,9 @@
     "HTML",
     "CSS",
     "JavaScript",
-    "JSP"
+    "JSP",
+    "Ollama",
+    "DeepSeek AI"
   ],
   "experience": {
     "Analyst at TRPGLOBAL": "May 2025 to Present, Full-time, Kolkata. Oracle APEX, SQL, Software Infrastructure, Full-stack development.",
@@ -41,9 +43,15 @@
     "Murarai Government Polytechnic": "Diploma in ECE, 2017 to 2020, C Programming"
   },
   "projects": {
-    "Employee Management System": "Java, Spring Boot, Hibernate, PostgreSQL, REST APIs.",
+    "TRPGLOBAL Website": "Official production website built with Next.js, React.js, Tailwind CSS, TypeScript and Node.js with SSR and responsive design.",
+    "DeepSeek AI Integration": "Integrated DeepSeek AI (via Ollama) into Java Spring Boot backend for local LLM inference via REST APIs without cloud lock-in.",
+    "Employee Management System": "Java, Spring Boot, Hibernate, PostgreSQL, REST APIs. Enterprise employee CRUD, department allocation, and role management.",
+    "Banking Application": "Java, Spring Boot, MySQL, Spring Security, REST APIs. Account management, fund transfers, balance enquiries, and transaction history.",
+    "Blog Application": "Java, Spring Boot, JSP, MySQL, Spring Security, Hibernate. Full-stack blogging platform with user authentication and RBAC.",
+    "Smart Contact Manager": "Java, Spring Boot, Thymeleaf, MySQL, Spring Security. Contact management system with search, categorization, and user profiles.",
     "Real-time Inventory Tracker": "Java, Spring Boot, MySQL, REST APIs, AWS. Reduced stock discrepancies by 35%.",
-    "Blog Application": "Java, Spring Boot, JSP, MySQL, Spring Security. Supports 1000+ users.",
-    "No Broker Backend": "Java, Spring Boot, MySQL, Google Maps API, Spring Security. Search improved by 60%."
+    "YouTube Video Downloader": "Java, Spring Boot, YouTube API, File I/O, REST APIs. Download videos in selected resolutions without rate limits.",
+    "Weather App": "HTML, CSS, JavaScript, Weather API. Real-time city weather, 5-day forecast, responsive glassmorphism UI. Live demo: pintum07.github.io/Weather-App/.",
+    "Tic Tac Toe Game": "Pure JavaScript, HTML, CSS. Interactive 2-player game with winning logic, round reset, and score tracking."
   }
 }

@@ -1,46 +1,76 @@
-
+"""
+Pintu RAG Server — lightweight, no blocked DLLs.
+Uses pure-Python TF-IDF keyword search (no scipy, no sklearn, no sentence-transformers).
+Dependencies: fastapi, uvicorn  (both already installed)
+"""
 import json
-import faiss
-import numpy as np
+import math
+import re
+from collections import Counter
 from fastapi import FastAPI
-from pydantic import BaseModel
-from sentence_transformers import SentenceTransformer
-from transformers import AutoModelForCausalLM, AutoTokenizer
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
-# Load portfolio data
-with open('pintu_data.json') as f:
+# ── Load & flatten portfolio knowledge base ───────────────────────────────────
+with open('pintu-data.json') as f:
     data = json.load(f)
 
-# Flatten data into documents
 documents = []
-for k,v in data.items():
+for k, v in data.items():
     if isinstance(v, dict):
         for key, val in v.items():
             documents.append(f"{key}: {val}")
     elif isinstance(v, list):
-        documents.append(f"{k}: {', '.join(v)}")
+        documents.append(f"{k}: {', '.join(str(i) for i in v)}")
     else:
         documents.append(f"{k}: {v}")
 
-# Embeddings
-embed_model = SentenceTransformer('all-MiniLM-L6-v2')
-doc_embeddings = embed_model.encode(documents, convert_to_numpy=True)
+print(f"Loaded {len(documents)} knowledge chunks.")
 
-# FAISS index
-dim = doc_embeddings.shape[1]
-index = faiss.IndexFlatL2(dim)
-index.add(doc_embeddings)
+# ── Pure-Python TF-IDF index ──────────────────────────────────────────────────
+def tokenize(text: str):
+    return re.findall(r'\b\w+\b', text.lower())
 
-# LLM
-tokenizer = AutoTokenizer.from_pretrained("TheBloke/vicuna-7B-1.1-HF")
-model = AutoModelForCausalLM.from_pretrained("TheBloke/vicuna-7B-1.1-HF", device_map="auto")
+# Build IDF
+doc_tokens = [tokenize(d) for d in documents]
+N = len(documents)
+df = Counter()
+for tokens in doc_tokens:
+    for t in set(tokens):
+        df[t] += 1
 
-# FastAPI
-app = FastAPI()
+def idf(term):
+    return math.log((N + 1) / (df.get(term, 0) + 1)) + 1
+
+def tfidf_vec(tokens):
+    tf = Counter(tokens)
+    total = len(tokens) or 1
+    return {t: (c / total) * idf(t) for t, c in tf.items()}
+
+doc_vecs = [tfidf_vec(t) for t in doc_tokens]
+
+def cosine(a, b):
+    keys = set(a) & set(b)
+    if not keys:
+        return 0.0
+    dot = sum(a[k] * b[k] for k in keys)
+    mag_a = math.sqrt(sum(v * v for v in a.values()))
+    mag_b = math.sqrt(sum(v * v for v in b.values()))
+    return dot / (mag_a * mag_b) if (mag_a and mag_b) else 0.0
+
+def search(query: str, top_k: int = 3):
+    q_vec = tfidf_vec(tokenize(query))
+    scores = [(cosine(q_vec, dv), i) for i, dv in enumerate(doc_vecs)]
+    scores.sort(reverse=True)
+    return [documents[i] for _, i in scores[:top_k] if _ > 0]
+
+print("TF-IDF index ready.")
+
+# ── FastAPI ───────────────────────────────────────────────────────────────────
+app = FastAPI(title="Pintu RAG API", version="3.0")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -48,16 +78,15 @@ app.add_middleware(
 class Query(BaseModel):
     question: str
 
-def rag_query(query, top_k=3):
-    q_emb = embed_model.encode([query], convert_to_numpy=True)
-    D, I = index.search(q_emb, top_k)
-    context = "\n".join([documents[i] for i in I[0]])
-    input_text = f"Answer the question using only the context below.\nContext:\n{context}\nQuestion: {query}\nAnswer:"
-    inputs = tokenizer(input_text, return_tensors="pt").to(model.device)
-    output = model.generate(**inputs, max_new_tokens=150)
-    return tokenizer.decode(output[0], skip_special_tokens=True)
+@app.get("/")
+def health():
+    return {"status": "ok", "docs_indexed": len(documents)}
 
 @app.post("/query")
 def answer_question(q: Query):
-    response = rag_query(q.question)
-    return {"answer": response}
+    hits = search(q.question)
+    if not hits:
+        return {"answer": "Sorry, I couldn't find relevant information about that."}
+    answer = "\n".join(f"• {hit}" for hit in hits)
+    return {"answer": answer}
+

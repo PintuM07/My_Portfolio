@@ -1,7 +1,49 @@
 {
-  "personal": {"name":"Pintu Mahato","title":"Java Backend Developer","summary":"Experienced in Java, Spring Boot, Hibernate, and databases."},
-  "skills": ["Java","Spring Boot","Hibernate","JPA","MySQL","PostgreSQL","REST API","AWS Basics"],
-  "projects": {"Employee Management System":"CRUD system with Spring Boot and Hibernate.","Blog Application":"Web app with authentication and comments.","Inventory Tracker":"Real-time stock system with REST APIs."},
-  "experience": ["2.7 years backend development","Intern at Cognifiz","Intern at Euphoria"],
-  "education":"B.Tech in Electronics and Communication Engineering"
+  "personal": {
+    "name": "Pintu Mahato",
+    "title": "Software Developer",
+    "company": "TRPGLOBAL",
+    "location": "Kolkata, West Bengal, India",
+    "email": "mahatopintu63@gmail.com",
+    "phone": "+91 89182 53874",
+    "linkedin": "https://www.linkedin.com/in/pintu-mahato-software-developer/",
+    "github": "https://github.com/PintuM07",
+    "summary": "Passionate Software Developer at TRPGLOBAL, Kolkata. Loves solving backend problems with Java, Spring Boot, and Oracle APEX."
+  },
+  "skills": [
+    "Java",
+    "Spring Boot",
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "MySQL",
+    "PostgreSQL",
+    "REST APIs",
+    "Hibernate",
+    "JPA",
+    "Oracle APEX",
+    "SQL",
+    "AWS",
+    "Git",
+    "CI/CD",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "JSP"
+  ],
+  "experience": {
+    "Analyst at TRPGLOBAL": "May 2025 to Present, Full-time, Kolkata. Oracle APEX, SQL, Software Infrastructure, Full-stack development.",
+    "Internship Trainee at Pankaj Sir Academy": "Jul 2023 to Feb 2024, Apprenticeship, Bengaluru. Core Java, JSP, Spring Boot, REST APIs, MySQL.",
+    "Process Technician at Centum Electronics": "Nov 2020 to May 2023, Hybrid. Electronics, Process Management, Technical Analysis."
+  },
+  "education": {
+    "Mallabhum Institute of Technology WB": "B.Tech in ECE, Oct 2021 to Jun 2024, CGPA 7.99",
+    "Murarai Government Polytechnic": "Diploma in ECE, 2017 to 2020, C Programming"
+  },
+  "projects": {
+    "Employee Management System": "Java, Spring Boot, Hibernate, PostgreSQL, REST APIs.",
+    "Real-time Inventory Tracker": "Java, Spring Boot, MySQL, REST APIs, AWS. Reduced stock discrepancies by 35%.",
+    "Blog Application": "Java, Spring Boot, JSP, MySQL, Spring Security. Supports 1000+ users.",
+    "No Broker Backend": "Java, Spring Boot, MySQL, Google Maps API, Spring Security. Search improved by 60%."
+  }
 }

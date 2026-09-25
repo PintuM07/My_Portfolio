@@ -7,7 +7,7 @@ from sentence_transformers import SentenceTransformer
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 # Load your portfolio data
-with open('pintu_data.json') as f:
+with open('pintu-data.json') as f:
     data = json.load(f)
 
 # Flatten data

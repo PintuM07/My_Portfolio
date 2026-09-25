@@ -16,6 +16,13 @@
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         entry.target.classList.add("visible");
+        // Animate skill bars
+        var bar = entry.target.querySelector(".skill-bar-fill");
+        if (bar) {
+          var targetWidth = bar.style.width;
+          bar.style.width = "0%";
+          setTimeout(function () { bar.style.width = targetWidth; }, 80);
+        }
         observer.unobserve(entry.target);
       });
     },

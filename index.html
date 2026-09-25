@@ -11,6 +11,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -58,12 +59,22 @@
         <div class="container">
           <div class="hero-grid">
             <div class="hero-content fade-in">
+              <div class="hero-eyebrow"><span class="hero-dot"></span> Available for opportunities</div>
               <h1>Pintu Mahato</h1>
               <p class="subtitle">Software Developer @ TRPGLOBAL</p>
               <p class="lead">
                 Passionate about solving problems with code &mdash; especially in backend systems where real challenges happen.
                 Building scalable apps with Java, Spring Boot, React.js &amp; Oracle APEX. Currently based in Kolkata, WB.
               </p>
+              <!-- Tech Stack floating badges -->
+              <div class="hero-tech-row fade-in">
+                <div class="tech-badge"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+                <div class="tech-badge"><i class="devicon-spring-plain colored"></i><span>Spring</span></div>
+                <div class="tech-badge"><i class="devicon-react-original colored"></i><span>React</span></div>
+                <div class="tech-badge"><i class="devicon-nextjs-original"></i><span>Next.js</span></div>
+                <div class="tech-badge"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                <div class="tech-badge"><i class="devicon-amazonwebservices-original colored"></i><span>AWS</span></div>
+              </div>
               <div class="hero-cta">
                 <a href="#contact" class="btn btn-primary">Let&#39;s Connect</a>
                 <a href="#projects" class="btn btn-secondary">View Projects</a>
@@ -72,14 +83,29 @@
                 <a href="https://www.linkedin.com/in/pintu-mahato-software-developer/" target="_blank" rel="noopener">LinkedIn &rarr;</a>
                 <a href="https://github.com/PintuM07" target="_blank" rel="noopener">GitHub &rarr;</a>
               </div>
-            </div>
-            <div class="profile-card fade-in">
-              <div class="profile-image-wrap">
-                <img src="./assets/photo1.JPG" alt="Pintu Mahato - Software Developer at TRPGLOBAL" class="profile-image" />
+              <!-- Stats row -->
+              <div class="hero-stats fade-in">
+                <div class="hero-stat"><div class="hero-stat-num">2+</div><div class="hero-stat-label">Years Experience</div></div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat"><div class="hero-stat-num">8+</div><div class="hero-stat-label">GitHub Projects</div></div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat"><div class="hero-stat-num">10+</div><div class="hero-stat-label">Technologies</div></div>
               </div>
-              <div class="profile-stats">
-                <strong>2+ Years in Tech</strong>
-                <p>Backend systems &bull; Full-stack apps &bull; Production APIs</p>
+            </div>
+            <div class="hero-right fade-in">
+              <div class="profile-card">
+                <div class="profile-image-wrap">
+                  <img src="./assets/photo1.JPG" alt="Pintu Mahato - Software Developer at TRPGLOBAL" class="profile-image" />
+                </div>
+                <div class="profile-stats">
+                  <strong>2+ Years in Tech</strong>
+                  <p>Backend systems &bull; Full-stack apps &bull; Production APIs</p>
+                </div>
+              </div>
+              <!-- Hero decorative illustration -->
+              <div class="hero-illustration fade-in">
+                <img src="./assets/hero_tech.jpg" alt="Tech Stack Illustration" class="hero-illus-img" />
+                <div class="hero-illus-overlay"></div>
               </div>
             </div>
           </div>
@@ -103,24 +129,33 @@
                 everything I do.
               </p>
               <ul class="feature-list">
-                <li>Analyst at TRPGLOBAL &mdash; Oracle APEX, SQL &amp; software infrastructure</li>
-                <li>Expert in Java ecosystem: Spring Boot, Hibernate, JPA, REST APIs</li>
-                <li>Frontend: React.js, Next.js, Node.js, HTML, CSS, JavaScript, JSP</li>
-                <li>Strong SQL database design &mdash; MySQL, PostgreSQL &amp; query optimisation</li>
-                <li>Hands-on with AWS infrastructure &amp; DevOps practices</li>
-                <li>B.Tech ECE &mdash; Mallabhum Institute of Technology, WB (7.99 CGPA)</li>
+                <li><i class="devicon-oracle-original colored about-icon"></i> Analyst at TRPGLOBAL &mdash; Oracle APEX, SQL &amp; software infrastructure</li>
+                <li><i class="devicon-java-plain colored about-icon"></i> Expert in Java ecosystem: Spring Boot, Hibernate, JPA, REST APIs</li>
+                <li><i class="devicon-react-original colored about-icon"></i> Frontend: React.js, Next.js, Node.js, HTML, CSS, JavaScript, JSP</li>
+                <li><i class="devicon-mysql-plain colored about-icon"></i> Strong SQL database design &mdash; MySQL, PostgreSQL &amp; query optimisation</li>
+                <li><i class="devicon-amazonwebservices-original colored about-icon"></i> Hands-on with AWS infrastructure &amp; DevOps practices</li>
+                <li><i class="devicon-git-plain colored about-icon"></i> B.Tech ECE &mdash; Mallabhum Institute of Technology, WB (7.99 CGPA)</li>
               </ul>
             </div>
             <div class="content-side fade-in">
-              <h4>Core Focus Areas</h4>
-              <p>
-                RESTful API Architecture<br><br>
-                Oracle APEX Development<br><br>
-                React.js / Next.js Frontend<br><br>
-                Database Design &amp; Optimisation<br><br>
-                System Integration<br><br>
-                Code Quality &amp; Testing
-              </p>
+              <!-- Journey graphic -->
+              <div class="about-graphic-wrap">
+                <img src="./assets/about_journey.jpg" alt="Developer journey from electronics to software" class="about-graphic-img" />
+                <div class="about-graphic-overlay"></div>
+              </div>
+              <div class="about-focus-box">
+                <h4>Core Focus Areas</h4>
+                <div class="focus-chips">
+                  <span>REST APIs</span>
+                  <span>Oracle APEX</span>
+                  <span>React / Next.js</span>
+                  <span>Database Design</span>
+                  <span>System Integration</span>
+                  <span>Code Quality</span>
+                  <span>Spring Boot</span>
+                  <span>DevOps</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -129,20 +164,76 @@
       <!-- Skills -->
       <section id="skills" class="section">
         <div class="container">
-          <h2 class="fade-in">Technical Skills</h2>
+          <div class="skills-header">
+            <div>
+              <h2 class="fade-in">Technical Skills</h2>
+              <p class="fade-in" style="color:var(--muted);max-width:520px;line-height:1.7">A battle-tested toolkit spanning backend, frontend, cloud and database engineering.</p>
+            </div>
+            <div class="skills-network-wrap fade-in">
+              <img src="./assets/skills_network.jpg" alt="Skills network visualization" class="skills-network-img" />
+            </div>
+          </div>
           <div class="skills-grid">
-            <div class="skill-item fade-in"><div class="skill-name">Java</div><div class="skill-level">Advanced</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">Spring Boot</div><div class="skill-level">Expert</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">React.js</div><div class="skill-level">Proficient</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">Next.js</div><div class="skill-level">Proficient</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">Node.js</div><div class="skill-level">Intermediate</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">MySQL / PostgreSQL</div><div class="skill-level">Advanced</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">REST APIs</div><div class="skill-level">Expert</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">Hibernate / JPA</div><div class="skill-level">Advanced</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">Oracle APEX</div><div class="skill-level">Proficient</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">SQL</div><div class="skill-level">Advanced</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">AWS &amp; Cloud</div><div class="skill-level">Intermediate</div></div>
-            <div class="skill-item fade-in"><div class="skill-name">Git &amp; CI/CD</div><div class="skill-level">Proficient</div></div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-java-plain colored skill-devicon"></i></div>
+              <div class="skill-name">Java</div><div class="skill-level">Advanced</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-spring-plain colored skill-devicon"></i></div>
+              <div class="skill-name">Spring Boot</div><div class="skill-level">Expert</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-react-original colored skill-devicon"></i></div>
+              <div class="skill-name">React.js</div><div class="skill-level">Proficient</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-nextjs-original skill-devicon"></i></div>
+              <div class="skill-name">Next.js</div><div class="skill-level">Proficient</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-nodejs-plain colored skill-devicon"></i></div>
+              <div class="skill-name">Node.js</div><div class="skill-level">Intermediate</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-mysql-plain colored skill-devicon"></i></div>
+              <div class="skill-name">MySQL / PostgreSQL</div><div class="skill-level">Advanced</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-swagger-plain colored skill-devicon"></i></div>
+              <div class="skill-name">REST APIs</div><div class="skill-level">Expert</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:93%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-hibernate-plain colored skill-devicon"></i></div>
+              <div class="skill-name">Hibernate / JPA</div><div class="skill-level">Advanced</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:84%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-oracle-original colored skill-devicon"></i></div>
+              <div class="skill-name">Oracle APEX</div><div class="skill-level">Proficient</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:76%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-postgresql-plain colored skill-devicon"></i></div>
+              <div class="skill-name">SQL</div><div class="skill-level">Advanced</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:87%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-amazonwebservices-original colored skill-devicon"></i></div>
+              <div class="skill-name">AWS &amp; Cloud</div><div class="skill-level">Intermediate</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:62%"></div></div>
+            </div>
+            <div class="skill-item fade-in">
+              <div class="skill-icon-wrap"><i class="devicon-git-plain colored skill-devicon"></i></div>
+              <div class="skill-name">Git &amp; CI/CD</div><div class="skill-level">Proficient</div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+            </div>
           </div>
         </div>
       </section>
@@ -335,6 +426,13 @@
       <section id="contact" class="section">
         <div class="container">
           <h2 class="fade-in">Contact Me</h2>
+          <!-- Globe graphic banner -->
+          <div class="contact-globe-wrap fade-in">
+            <img src="./assets/contact_globe.jpg" alt="Global connectivity" class="contact-globe-img" />
+            <div class="contact-globe-overlay">
+              <p>&#127759; Open to remote &amp; on-site roles &mdash; Let&#39;s build something great together</p>
+            </div>
+          </div>
           <div class="contact-grid">
             <form class="contact-form fade-in" id="contact-form" action="https://formsubmit.co/mahatopintu63@gmail.com" method="POST">
               <input type="hidden" name="_subject" value="New Portfolio Contact!">
@@ -359,20 +457,32 @@
             </form>
             <div class="contact-info fade-in">
               <div class="contact-card">
+                <div class="contact-card-icon">&#9993;</div>
                 <h4>Email</h4>
                 <a href="mailto:mahatopintu63@gmail.com">mahatopintu63@gmail.com</a>
               </div>
               <div class="contact-card">
+                <div class="contact-card-icon">&#128222;</div>
                 <h4>Phone</h4>
                 <a href="tel:+918918253874">+91 89182 53874</a>
               </div>
               <div class="contact-card">
+                <div class="contact-card-icon">&#128205;</div>
                 <h4>Location</h4>
                 <p>Kolkata, West Bengal, India</p>
               </div>
               <div class="contact-card">
+                <div class="contact-card-icon">&#127760;</div>
                 <h4>Portfolio Live</h4>
                 <a href="https://pintum07.github.io/My_Portfolio/" target="_blank" rel="noopener" class="btn btn-secondary" style="margin-top:8px;width:100%">View Live Site &rarr;</a>
+              </div>
+              <div class="contact-social-row">
+                <a href="https://www.linkedin.com/in/pintu-mahato-software-developer/" target="_blank" rel="noopener" class="contact-social-btn">
+                  <i class="devicon-linkedin-plain colored"></i> LinkedIn
+                </a>
+                <a href="https://github.com/PintuM07" target="_blank" rel="noopener" class="contact-social-btn">
+                  <i class="devicon-github-original"></i> GitHub
+                </a>
               </div>
             </div>
           </div>

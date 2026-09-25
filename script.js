@@ -42,27 +42,40 @@
     });
   }
 
-  // ─── Active Nav on Scroll ─────────────────────────────────────────────────────
-  var navLinks    = document.querySelectorAll(".nav-link, .mobile-link");
-  var sections    = document.querySelectorAll("section");
-  var snapContainer = document.getElementById("snap-container");
+  // ─── Active Nav and Navbar on Scroll ─────────────────────────────────────────
+  var navLinks = document.querySelectorAll(".nav-link, .mobile-link");
+  var sections = document.querySelectorAll("section");
+  var nav      = document.querySelector(".nav");
 
-  if (snapContainer) {
-    snapContainer.addEventListener("scroll", function () {
-      var current = "";
-      sections.forEach(function (section) {
-        if (snapContainer.scrollTop >= section.offsetTop - 160) {
-          current = section.getAttribute("id");
-        }
-      });
-      navLinks.forEach(function (link) {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + current) {
-          link.classList.add("active");
-        }
-      });
+  function onScroll() {
+    var scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Navbar scrolled state
+    if (nav) {
+      if (scrollPos > 40) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    }
+
+    // Active nav link based on viewport position
+    var current = "";
+    sections.forEach(function (section) {
+      if (scrollPos >= section.offsetTop - 200) {
+        current = section.getAttribute("id");
+      }
+    });
+    navLinks.forEach(function (link) {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === "#" + current) {
+        link.classList.add("active");
+      }
     });
   }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
   // ─── Smooth Scroll ───────────────────────────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
